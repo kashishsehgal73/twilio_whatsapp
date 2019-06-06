@@ -1,5 +1,4 @@
 from flask import Flask, request
-from twilio.twiml.messaging_response import MessagingResponse
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ks73wbot-kwqfwu-8d044c465d30.json"
 
