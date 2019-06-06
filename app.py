@@ -20,8 +20,12 @@ def sms_reply():
 	msg = request.form.get('Body')
 
 	resp = detect_intent_from_text(str(msg),999)
+	resp = reso.fulfillment_text
 
-	return str(resp.fulfillment_text)
+	response = MessagingResponse()
+	response.message(resp)
+
+	return str(resp)
 
 
 
