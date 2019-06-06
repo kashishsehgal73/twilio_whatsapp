@@ -26,8 +26,8 @@ def sms_reply():
 		return str(resp)
 
 	else: 
-		msg = request.form.get('body')
-		resp = detect_intent_from_text(str(msg),1234)
+		#msg = request.form.get('body')
+		resp = detect_intent_from_text('show me sports news',1234)
 		resp = resp.fulfillment_text
 
 		response = MessagingResponse()
