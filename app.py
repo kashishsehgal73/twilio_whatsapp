@@ -1,7 +1,7 @@
 from flask import Flask, request
 import os
 from twilio.twiml.messaging_response import MessagingResponse
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ks73wbot-kwqfwu-8d044c465d30.json"
+from utils import fetch_reply
 
 import dialogflow_v2 as dialogflow
 dialogflow_session_client = dialogflow.SessionsClient()
@@ -13,39 +13,20 @@ app = Flask(__name__)
 def hello():
 	return "Hello, World!"
 
-@app.route("/sms", methods=['POST','GET'])
+@app.route("/sms", methods=['POST'])
 def sms_reply():
-	if request.method == 'GET':
 
-		resp = detect_intent_from_text('show me sports news',1234)
-		resp = resp.fulfillment_text
+	print(request.form)
+	msg = request.form.get('Body')
+	sender = request.form.get('From')
+	resp = fetch_reply(msg,sender)
+	response = MessagingResponse()
+	response.message(resp)
 
-		response = MessagingResponse()
-		response.message(resp)
-
-		return str(resp)
-
-	else: 
-		print(request.form)
-		msg = request.form.get('Body')
-		resp = detect_intent_from_text('show me sports news',1234)
-		resp = resp.fulfillment_text
-
-		response = MessagingResponse()
-		response.message(resp)
-		
-		#response.message("You said: {}".format(msg))
-		return str(response)
+	#response.message("You said: {}".format(msg))
+	return str(response)
 
 
-
-
-def detect_intent_from_text(text, session_id, language_code='en'):
-	session = dialogflow_session_client.session_path(PROJECT_ID, session_id)
-	text_input = dialogflow.types.TextInput(text=text, language_code=language_code)
-	query_input = dialogflow.types.QueryInput(text=text_input)
-	response = dialogflow_session_client.detect_intent(session=session, query_input=query_input)
-	return response.query_result
 
 if __name__ == "__main__":
 	app.run(use_reloader=True)
