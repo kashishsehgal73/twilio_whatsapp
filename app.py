@@ -13,7 +13,7 @@ def sms_reply():
     # Fetch the message
     msg = request.form.get('Body')
 
-	resp = detect_intent_from_text(str(msg),9990071108)
+	resp = detect_intent_from_text(str(msg),999)
 
     return str(resp.fulfillment_text)
 
