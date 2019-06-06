@@ -13,19 +13,27 @@ app = Flask(__name__)
 def hello():
 	return "Hello, World!"
 
-@app.route("/sms", methods=['POST'])
+@app.route("/sms", methods=['POST','GET'])
 def sms_reply():
-	"""Respond to incoming calls with a simple text message."""
-	# Fetch the message
-	msg = request.form.get('Body')
+	if request.method == 'GET':
 
-	resp = detect_intent_from_text(str(msg),999)
-	resp = resp.fulfillment_text
+		resp = detect_intent_from_text('show me sports news',1234)
+		resp = resp.fulfillment_text
 
-	response = MessagingResponse()
-	response.message(str(resp))
+		response = MessagingResponse()
+		response.message(resp)
 
-	return str(resp)
+		return str(resp)
+
+	else: 
+		msg = request.form.get('Body')
+		resp = detect_intent_from_text(str(msg),1234)
+		resp = resp.fulfillment_text
+
+		response = MessagingResponse()
+		response.message(resp)
+		return str(resp)
+
 
 
 
