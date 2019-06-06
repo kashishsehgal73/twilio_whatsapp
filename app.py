@@ -23,7 +23,7 @@ def sms_reply():
 	resp = resp.fulfillment_text
 
 	response = MessagingResponse()
-	response.message(resp)
+	response.message(str(resp))
 
 	return str(resp)
 
