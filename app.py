@@ -15,7 +15,7 @@ def sms_reply():
 
 	resp = detect_intent_from_text(str(msg),9990071108)
 
-    return str(resp)
+    return str(resp.fulfillment_text)
 
 def detect_intent_from_text(text, session_id, language_code='en'):
     session = dialogflow_session_client.session_path(PROJECT_ID, session_id)
