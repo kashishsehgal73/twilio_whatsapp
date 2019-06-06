@@ -26,14 +26,15 @@ def sms_reply():
 		return str(resp)
 
 	else: 
+		print(request.form)
 		msg = request.form.get('Body')
-		#resp = detect_intent_from_text('show me sports news',1234)
-		#resp = resp.fulfillment_text
+		resp = detect_intent_from_text('show me sports news',1234)
+		resp = resp.fulfillment_text
 
 		response = MessagingResponse()
-		#response.message(resp)
+		response.message(resp)
 		
-		response.message("You said: {}".format(msg))
+		#response.message("You said: {}".format(msg))
 		return str(response)
 
 
