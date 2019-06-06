@@ -13,11 +13,16 @@ def sms_reply():
     # Fetch the message
     msg = request.form.get('Body')
 
-    # Create reply
-    resp = MessagingResponse()
-    resp.message("You said: {}".format(msg))
+	resp = detect_intent_from_text(str(msg),9990071108)
 
     return str(resp)
+
+def detect_intent_from_text(text, session_id, language_code='en'):
+    session = dialogflow_session_client.session_path(PROJECT_ID, session_id)
+    text_input = dialogflow.types.TextInput(text=text, language_code=language_code)
+    query_input = dialogflow.types.QueryInput(text=text_input)
+    response = dialogflow_session_client.detect_intent(session=session, query_input=query_input)
+    return response.query_result
 
 if __name__ == "__main__":
     app.run(debug=True)
