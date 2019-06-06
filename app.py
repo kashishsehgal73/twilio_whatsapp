@@ -26,7 +26,7 @@ def sms_reply():
 		return str(resp)
 
 	else: 
-		msg = request.form.get('Body')
+		msg = request.form.get('body')
 		resp = detect_intent_from_text(str(msg),1234)
 		resp = resp.fulfillment_text
 
@@ -45,4 +45,4 @@ def detect_intent_from_text(text, session_id, language_code='en'):
 	return response.query_result
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(use_reloader=True)
