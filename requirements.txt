@@ -7,3 +7,4 @@ gnewsclient
 twilio
 request
 pymongo
+dnspython
