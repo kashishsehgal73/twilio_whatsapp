@@ -9,9 +9,8 @@ def get_score(parameters):
 	message = []
 	for match in matches:
 		if ((country in match["team1"]["name"] ) or (country in match["team2"]["name"] )):
-			print("####################################################################")
 			mid = match["id"]
-			if match['mchstate'] == 'delay' or match['mchstate'] == 'preview':
+			if match['mchstate'] != 'mom' or match['mchstate'] == 'completed':
 				return (match['status'])
 			message =  match_details(mid)
 			print(message)
@@ -22,9 +21,9 @@ def list_matches(parameters):
 	matches = c.matches()
 	message = []
 	for match in matches:
-		details = "\n".join([match["srs"] , match["mnum"] , match["status"]])
+		names = str(match["team1"]["name"] +" " + match["team2"]["name"]+ "\n\n" )
+		details = "\n".join([match["srs"], names, match["mnum"], match["status"]])
 		message.append(details)
-		message.append(str(match["team1"]["name"] +" " + match["team2"]["name"]+ "\n\n" ))
 		print(message)
 	return "\n".join(message)
 
