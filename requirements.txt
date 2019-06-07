@@ -1,5 +1,5 @@
 dialogflow==0.6.0
-pycricbuzz==2.4
+pycricbuzz
 gnewsclient==1.12
 twilio==6.27.1
 Flask==1.0.2

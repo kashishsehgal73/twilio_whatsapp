@@ -7,5 +7,4 @@ def data_dict(**data):
 
 def upload(sess_id, message_received, message_sent):
 	db.insert_one(data_dict(session_id = sess_id, message_received = message_received, message_sent = message_sent))
-
 	return
