@@ -6,6 +6,6 @@ flask
 pymongo
 gunicorn
 python-Levenshtein
-request==2.22.0
+requests==2.22.0
 dnspython
 json==2.0.9
