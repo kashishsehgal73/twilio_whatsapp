@@ -1,5 +1,5 @@
 dialogflow
-pycricbuzz==0.1
+pycricbuzz
 gnewsclient
 twilio
 flask
