@@ -22,8 +22,6 @@ def sms_reply():
 	resp = fetch_reply(msg,sender)
 	response = MessagingResponse()
 	response.message(resp)
-
-	#response.message("You said: {}".format(msg))
 	return str(response)
 
 
