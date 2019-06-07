@@ -1,5 +1,4 @@
 from pycricbuzz import Cricbuzz
-import json
 c = Cricbuzz()
 
 
