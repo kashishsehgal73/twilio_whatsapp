@@ -29,7 +29,8 @@ def fetch_reply(msg, session_id):
 	if response.intent.display_name == 'get_news':
 		vaue =  get_news(dict(response.parameters))
 	elif response.intent.display_name == 'cricket_score':
-		value =  get_score(dict(response.parameters))
+		value = get_news(dict(response.parameters))
+		#value =  get_score(dict(response.parameters))
 	elif response.intent.display_name == 'match_list':
 		value = list_matches(dict(response.parameters))
 	else:
