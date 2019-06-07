@@ -8,5 +8,4 @@ gunicorn
 python-Levenshtein
 request
 dnspython
-json==2.0.9
 
