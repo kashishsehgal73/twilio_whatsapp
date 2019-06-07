@@ -1,4 +1,5 @@
 flask
+gunicorn
 wikipedia
 pycricbuzz
 python-Levenshtein
