@@ -10,3 +10,4 @@ gunicorn
 python-Levenshtein
 dnspython
 requests==2.22.0
+json==2.0.9
