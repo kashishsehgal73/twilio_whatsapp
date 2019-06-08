@@ -1,0 +1,10 @@
+dialogflow
+pycricbuzz==2.4
+gnewsclient
+twilio
+flask
+pymongo
+gunicorn
+python-Levenshtein
+requests==2.22.0
+dnspython
