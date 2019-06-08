@@ -1,1 +1,3 @@
 cricket/
+*.pyc
+__pycache__/
