@@ -27,12 +27,18 @@ def detect_intent_from_text(text, session_id, language_code='en'):
 def fetch_reply(msg, session_id):
 	response = detect_intent_from_text(msg, session_id)
 	if response.intent.display_name == 'get_news':
-		vaue =  get_news(dict(response.parameters))
+		value =  get_news(dict(response.parameters))
+		print("1")
 	elif response.intent.display_name == 'cricket_score':
+		print("1")
 		value =  get_score(dict(response.parameters))
 	elif response.intent.display_name == 'match_list':
+		print("11111")
 		value =  list_matches(dict(response.parameters))
 	else:
+		print("1f32f")
 		value =  response.fulfillment_text
+		print("1f32f")
+
 	upload(session_id, msg, value)
 	return value
