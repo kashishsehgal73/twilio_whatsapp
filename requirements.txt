@@ -9,3 +9,4 @@ numpy==1.16.2
 gunicorn
 python-Levenshtein
 dnspython
+requests==2.22.0
