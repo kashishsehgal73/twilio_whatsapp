@@ -36,6 +36,6 @@ def fetch_reply(msg, session_id):
 		else:
 			value =  response.fulfillment_text
 	except:
-		value = "Sorry I'm not that smart yet. But I'll get with usage"
+		value = "Sorry I'm not that smart yet. But I'll get better with usage"
 	upload(session_id, msg, value)
 	return value

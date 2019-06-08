@@ -18,8 +18,6 @@ def get_score(parameters):
 	return "Sorry"
 
 def list_matches(parameters):
-	return c.livescore(str(20247))
-
 	matches = c.matches()
 	message = []
 	for match in matches:
