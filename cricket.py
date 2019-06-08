@@ -1,6 +1,6 @@
 
-from pycricbuzz import Cricbuzz
-c = Cricbuzz()
+from cric_api import kashish_assistant
+c = kashish_assistant()
 
 
 def get_score(parameters):
@@ -19,6 +19,7 @@ def get_score(parameters):
 
 def list_matches(parameters):
 	matches = c.matches()
+	print("##########################################", type(matches))
 	message = []
 	for match in matches:
 		names = str(match["team1"]["name"] +" " + match["team2"]["name"]+ "\n\n" )

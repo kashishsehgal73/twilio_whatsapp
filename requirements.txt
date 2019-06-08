@@ -3,7 +3,6 @@ Cython==0.28.4
 pymongo==3.8.0
 dialogflow==0.6.0
 cryptography==2.1.4
-pycricbuzz==2.4
 gnewsclient==1.12
 twilio==6.27.1
 numpy==1.16.2
