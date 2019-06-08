@@ -8,6 +8,7 @@ class kashish_assistant():
 	def crawl_url(self,url):
 		try:
 			r = requests.get(url)
+			print(r, r.text)
 			return r.json()
 		except Exception:
 			raise
