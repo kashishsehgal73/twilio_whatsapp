@@ -25,7 +25,6 @@ def detect_intent_from_text(text, session_id, language_code='en'):
 
 
 def fetch_reply(msg, session_id):
-
 	response = detect_intent_from_text(msg, session_id)
 	if response.intent.display_name == 'get_news':
 		vaue =  get_news(dict(response.parameters))
@@ -35,5 +34,5 @@ def fetch_reply(msg, session_id):
 		value =  list_matches(dict(response.parameters))
 	else:
 		value =  response.fulfillment_text
-		upload(session_id, msg, value)
+	upload(session_id, msg, value)
 	return value
