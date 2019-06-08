@@ -25,15 +25,15 @@ def detect_intent_from_text(text, session_id, language_code='en'):
 
 
 def fetch_reply(msg, session_id):
-	try:
-		response = detect_intent_from_text(msg, session_id)
-		if response.intent.display_name == 'get_news':
-			vaue =  get_news(dict(response.parameters))
-		elif response.intent.display_name == 'cricket_score':
-			value =  get_score(dict(response.parameters))
-		elif response.intent.display_name == 'match_list':
-			value =  list_matches(dict(response.parameters))
-		else:
-			value =  response.fulfillment_text
-	upload(session_id, msg, value)
+
+	response = detect_intent_from_text(msg, session_id)
+	if response.intent.display_name == 'get_news':
+		vaue =  get_news(dict(response.parameters))
+	elif response.intent.display_name == 'cricket_score':
+		value =  get_score(dict(response.parameters))
+	elif response.intent.display_name == 'match_list':
+		value =  list_matches(dict(response.parameters))
+	else:
+		value =  response.fulfillment_text
+		upload(session_id, msg, value)
 	return value
