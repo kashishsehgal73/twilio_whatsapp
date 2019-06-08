@@ -10,7 +10,7 @@ def get_score(parameters):
 	for match in matches:
 		if ((country in match["team1"]["name"] ) or (country in match["team2"]["name"] )):
 			mid = match["id"]
-			if match['mchstate'] != 'mom' or match['mchstate'] == 'completed':
+			if match['mchstate'] != 'mom' or match['mchstate'] != 'completed':
 				return (match['status'])
 			message =  match_details(mid)
 			print(message)

@@ -35,7 +35,5 @@ def fetch_reply(msg, session_id):
 			value =  list_matches(dict(response.parameters))
 		else:
 			value =  response.fulfillment_text
-	except:
-		value = "Sorry I'm not that smart yet. But I'll get better with usage"
 	upload(session_id, msg, value)
 	return value
