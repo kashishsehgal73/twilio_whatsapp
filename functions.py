@@ -34,8 +34,8 @@ def get_weather(parameters,session_id):
 	str += "{} \n\nCurrent temperature : {}°C\nMinimum temperature : {}°C\nMaximum temperature : {}°C. \n\nAir pressure : {} mbar\nHumidity : {}%  \nVisibility : {} miles.".format(wea['weather_state_name'], round(wea['the_temp'],1), round(wea['min_temp'],1), round(wea['max_temp'],1), round(wea['air_pressure'],1), round(wea['humidity'],1), round(wea['visibility'],1))
 	return (str)
 
-def get_fact(parameters,session_id):
-	num = parameters.get('number')
+def get_fact(parameters):
+	num = int(parameters.get('number'))
 	url1 = 'http://numbersapi.com/{}/math'.format(num)
 	response = requests.get(url1)
 	return response.text
