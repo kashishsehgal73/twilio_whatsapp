@@ -37,4 +37,4 @@ def fetch_reply(msg, session_id):
 		return value
 	except Exception as e:
 		print(e)
-		return "Sorry, I'll get better with time"
+		return "Oops! Looks like my cricket buddy is facing some problems and is not able to tell me the info right now. Try my other functions till then"
