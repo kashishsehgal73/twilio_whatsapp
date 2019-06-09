@@ -18,28 +18,8 @@ def hello():
 def sms_reply():
 	msg = request.form.get('Body')
 	sender = request.form.get('From')
-	# Create reply
-	resp = MessagingResponse()
-	recieved_obj = fetch_reply(msg,sender)
+	return fetch_reply(msg,sender)
 
-	# If the recieved object is from get_weather or default responses from dialogflow
-	if isinstance(recieved_obj[0], str):
-		message = Message()
-		message.body(recieved_obj[0])
-		if(recieved_obj[1]):
-			message.media(recieved_obj[1])
-		resp.append(message)
-		return str(resp)
-
-	# If the recieved object is from get_news()
-	for row in recieved_obj:
-		message = Message()
-		link = requests.get('http://tinyurl.com/api-create.php?url={}'.format(row['link'])).content.decode('utf-8')
-		message.body("{}\n{}".format(row['title'],link))
-		if row['media'] :
-			message.media(row['media'])
-		resp.append(message)
-	return str(resp)
 
 if __name__ == "__main__":
 	app.run(use_reloader=True)

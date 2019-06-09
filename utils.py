@@ -1,6 +1,8 @@
 from cricket import get_score,list_matches
 from weather_news import get_news,get_weather
 import dialogflow_v2 as dialogflow
+from twilio.twiml.messaging_response import Body, Media, Message, MessagingResponse
+
 import os
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "client-secret.json"
@@ -15,16 +17,46 @@ def detect_intent_from_text(text, session_id, language_code='en'):
     return response.query_result
 
 def fetch_reply(msg, session_id):
+
+	resp = MessagingResponse()
 	response = detect_intent_from_text(msg, session_id)
-	print(dict(response.parameters))
+
 	if response.intent.display_name == 'get_news':
 		value =  get_news(dict(response.parameters),session_id)
+
+		for row in value:
+			message = Message()
+			link = requests.get('http://tinyurl.com/api-create.php?url={}'.format(row['link'])).content.decode('utf-8')
+			message.body("{}\n{}".format(row['title'],link))
+			if row['media'] :
+				message.media(row['media'])
+			resp.append(message)
+		return resp
+
+
+
 	elif response.intent.display_name == 'get_weather':
-		return get_weather(dict(response.parameters),session_id)
+		value =  get_weather(dict(response.parameters),session_id)
+		message = Message()
+		message.body(recieved_obj[0])
+		message.media(recieved_obj[1])
+		resp.append(message)
+		return resp
+
+
+
 	elif response.intent.display_name == 'cricket_score':
 		value =  get_score(dict(response.parameters))
+		return resp.message(str(value))
+
+
+
 	elif response.intent.display_name == 'match_list':
 		value = list_matches(dict(response.parameters))
+		return resp.message(str(value))
+
+		
 	else:
+
 		value = response.fulfillment_text
-	return value
+		return resp.message(str(value))
