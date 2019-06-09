@@ -1,13 +1,11 @@
 from cricket import get_score,list_matches
 from weather_news import get_news,get_weather
 import dialogflow_v2 as dialogflow
-
+import os
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "client-secret.json"
 dialogflow_session_client = dialogflow.SessionsClient()
 PROJECT_ID = "ks73wbot-kwqfwu"
-
-
 
 def detect_intent_from_text(text, session_id, language_code='en'):
     session = dialogflow_session_client.session_path(PROJECT_ID, session_id)

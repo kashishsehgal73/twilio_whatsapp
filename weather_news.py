@@ -1,5 +1,5 @@
 from gnewsclient import gnewsclient
-from database import upload,update_records
+from database import update_records
 import os,requests,json
 
 client = gnewsclient.NewsClient(max_results=3)

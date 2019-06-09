@@ -12,12 +12,5 @@ def update_records(session_id, top, loc, cit):
 		records.update_one({'from': session_id}, {'$set': {'geo-country': loc }}, upsert=True)
 	if cit:
 		records.update_one({'from': session_id}, {'$set': {'geo-city': cit }}, upsert=True)
-	a = records.find({'from': session_id})[0]
-	return a['news_type'], a['geo-country'], a['geo-city']
-
-def data_dict(**data):
-	return data
-
-def upload(sess_id, message_received, message_sent):
-	db.insert_one(data_dict(session_id = sess_id, message_received = message_received, message_sent = message_sent))
-	return
+	user_details = records.find({'from': session_id})[0]
+	return user_details['news_type'], user_details['geo-country'], user_details['geo-city']
