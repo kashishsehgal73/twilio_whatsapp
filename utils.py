@@ -38,8 +38,8 @@ def fetch_reply(msg, session_id):
 	elif response.intent.display_name == 'get_weather':
 		value =  get_weather(dict(response.parameters),session_id)
 		message = Message()
-		message.body(recieved_obj[0])
-		message.media(recieved_obj[1])
+		message.body(value[0])
+		message.media(value[1])
 		resp.append(message)
 		return resp
 
@@ -55,7 +55,7 @@ def fetch_reply(msg, session_id):
 		value = list_matches(dict(response.parameters))
 		return resp.message(str(value))
 
-		
+
 	else:
 
 		value = response.fulfillment_text
