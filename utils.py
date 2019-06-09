@@ -14,7 +14,7 @@ def get_news(parameters,session_id):
 	top = parameters.get('news_type')
 	loc = parameters.get('geo-country')
 	client.topic, client.location, temp = update_records(session_id, top, loc, '')
-	return client.get_news()x
+	return client.get_news()
 
 def get_weather(parameters,session_id):
 	city = parameters.get('geo-city')
