@@ -22,7 +22,7 @@ def sms_reply():
 	resp = MessagingResponse()
 	recieved_obj = fetch_reply(msg,sender)
 
-	# If the recieved object is from get_weather()
+	# If the recieved object is from get_weather or default responses from dialogflow
 	if isinstance(recieved_obj[0], str):
 		message = Message()
 		message.body(recieved_obj[0])
