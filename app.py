@@ -26,7 +26,8 @@ def sms_reply():
 	if isinstance(recieved_obj[0], str):
 		message = Message()
 		message.body(recieved_obj[0])
-		message.media(recieved_obj[1])
+		if(recieved_obj[1]):
+			message.media(recieved_obj[1])
 		resp.append(message)
 		return str(resp)
 

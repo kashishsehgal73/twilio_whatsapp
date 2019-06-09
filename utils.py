@@ -26,5 +26,5 @@ def fetch_reply(msg, session_id):
 	elif response.intent.display_name == 'match_list':
 		value = list_matches(dict(response.parameters))
 	else:
-		value = response.fulfillment_text, "text"
+		value = response.fulfillment_text
 	return value
