@@ -1,4 +1,4 @@
-import os
+import os,requests
 from gnewsclient import gnewsclient
 from cricket import get_score,list_matches
 from database import upload,update_records
@@ -14,7 +14,7 @@ def get_news(parameters,session_id):
 	top = parameters.get('news_type')
 	loc = parameters.get('geo-country')
 	client.topic, client.location, temp = update_records(session_id, top, loc, '')
-	return client.get_news()
+	return client.get_news()x
 
 def get_weather(parameters,session_id):
 	city = parameters.get('geo-city')
