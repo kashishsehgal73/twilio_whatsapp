@@ -8,7 +8,8 @@ class kashish_assistant():
 	def crawl_url(self,url):
 		try:
 			headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
-			r = requests.get(url, headers= headers ).json()
+			r = requests.get(url = url, headers= headers).json()
+			return r
 		except Exception:
 			raise
 
@@ -196,33 +197,6 @@ class kashish_assistant():
 				card["fall_wickets"] = fow
 				d.append(card.copy())
 			data['scorecard'] = d
-			return data
-		except Exception:
-			raise
-
-	def fullcommentary(self,mid):
-		data = {}
-		try:
-			url =  "https://www.cricbuzz.com/match-api/"+mid+"/commentary-full.json"
-			comm = self.crawl_url(url).get('comm_lines')
-			d = []
-			for c in comm:
-				if "comm" in c:
-					d.append({"comm":c.get("comm"),"over":c.get("o_no")})
-			data['fullcommentary'] = d
-			return data
-		except Exception:
-			raise
-	def players(self,mid):
-		data = {}
-		try:
-			url =  "https://www.cricbuzz.com/match-api/"+mid+"/commentary.json"
-			players = self.crawl_url(url).get('players')
-			d = []
-			for c in players:
-				if "player" in c:
-					d.append({"id":c.get("id"),"f_name":c.get("f_name"),"name":c.get("name"),"bat_style":c.get("bat_style"),"bowl_style":c.get("bowl_style")})
-			data['players'] = d
 			return data
 		except Exception:
 			raise
