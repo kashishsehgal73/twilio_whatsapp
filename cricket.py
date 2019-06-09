@@ -19,7 +19,6 @@ def get_score(parameters):
 
 def list_matches(parameters):
 	matches = c.matches()
-	print("##########################################", type(matches))
 	message = []
 	for match in matches:
 		names = str(match["team1"]["name"] +" " + match["team2"]["name"]+ "\n\n" )
