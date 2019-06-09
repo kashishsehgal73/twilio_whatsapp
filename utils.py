@@ -1,5 +1,5 @@
 from cricket import get_score,list_matches
-from weather_news import get_news,get_weather
+from functions import get_news,get_weather,get_fact
 import dialogflow_v2 as dialogflow
 import os
 
@@ -30,6 +30,8 @@ def fetch_reply(msg, session_id):
 			value =  get_score(dict(response.parameters))
 		elif response.intent.display_name == 'match_list':
 			value = list_matches(dict(response.parameters))
+		elif response.intent.display_name == 'number_fact':
+			value = get_fact(dict(response.parameters))
 		else:
 			value = response.fulfillment_text
 		return value
